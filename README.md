@@ -45,13 +45,53 @@ Dilation helps in merging nearby edges, this reduces the contour area. This help
 1. Detected Coins Using Canny Edge Detection
 ![Detected coins by Canny](./imgs/canny.png)
 
-3. Detected Coins Based on Contour Area
-![Detected coins based on contour area](./imgs/Contour Area.png)
+2. Detected Coins Based on Contour Area
+![Detected coins based on contour area](./imgs/Contour%20Area.png)
 
-4. Result of Dilation
-![Result of Dilation](./imgs/Dilated.png)
+3. Result of Dilation
+![Result of Dilation](./imgs/dilation.png)
+
+4. Detected Coins After Dilation
+![Detected coins after dilation](./imgs/After%20Dilation.png)
 
 
-8. Detected Coins After Dilation
-![Detected coins after dilation](./imgs/After Dilation.png)
+## Part 2: Keypoint Extraction and Image Stitching
+
+### Installation
+1. Ensure you have Python installed along with the following dependencies:
+
+pip install opencv-python numpy matplotlib
+
+2. Running the Code
+
+3. Place the images to be stitched inside the imgs/ folder.
+
+4. Run the script:
+
+   python3 main.py
+
+The outputs, including detected keypoints and the final stitched panorama, will be saved inside the imgs/ folder.
+
+### Methodology
+
+1. Feature Detection
+* Uses the SIFT (Scale-Invariant Feature Transform) algorithm to extract keypoints and descriptors from the images.
+* Features are matched using a Brute-Force Matcher (BFMatcher) with K-Nearest Neighbors (KNN).
+
+2. Image Stitching
+* Finds correspondences between images using feature matching.
+* Computes homography transformation using RANSAC to align images.
+
+Uses perspective warping to blend images into a panorama.
+
+### Results
+
+1. Keypoint Detection
+Detected keypoints in input images:
+![Detected keypoints in input images](./imgs/keypoints.png)
+
+2. Final Stitched Panorama
+Result after stitching images together:
+![Result after stitching images together](./imgs/stitched_panorama.png)
+
 
