@@ -18,6 +18,7 @@ contours1, _ = cv2.findContours(edges, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPL
 cv2.drawContours(output_image, contours1, -1, (0, 255, 0), 2)
 plt.imshow(output_image)
 plt.title("Detected coins by Canny")
+plt.savefig(f"./imgs/canny.png", bbox_inches="tight", dpi=300)
 plt.axis("off")
 plt.show()
 
@@ -33,6 +34,7 @@ cv2.drawContours(output_image, valid_contours, -1, (0, 255, 0), 2)
 
 plt.imshow(output_image)
 plt.title("Detected coins based on contour area")
+plt.savefig(f"./imgs/Contour Area.png", bbox_inches="tight", dpi=300)
 plt.axis("off")
 plt.show()
 
@@ -50,6 +52,7 @@ for i, contour in enumerate(valid_contours):
 
     plt.imshow(cropped_coin)
     plt.title(f"Segmented Coin {i+1}")
+    plt.savefig(f"./imgs/Segmented Coin{i+1}.png", bbox_inches="tight", dpi=300)
     plt.axis("off")
     plt.show()
 
@@ -62,7 +65,7 @@ for i, contour in enumerate(valid_contours):
 
 dilated = cv2.dilate(edges, (1, 1), iterations=2)
 plt.imshow(dilated)
-plt.title("Result of Dilation")
+plt.savefig(f"./imgs/dilation.png", bbox_inches="tight", dpi=300)
 plt.show()
 
 output_image = image.copy()
@@ -74,5 +77,6 @@ print("Number of coins in the image: ", len(contours2))
 
 plt.imshow(output_image)
 plt.title("Detected coins after dilation")
+plt.savefig(f"./imgs/After Dilation.png", bbox_inches="tight", dpi=300)
 plt.axis("off")
 plt.show()
